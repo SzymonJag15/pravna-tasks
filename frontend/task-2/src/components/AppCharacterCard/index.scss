@@ -1,0 +1,70 @@
+.app-character-card {
+  width: 100%;
+  max-width: 317px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 28px 15px;
+
+  @media (min-width: 480px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__img-wrapper {
+    margin-bottom: 10px;
+
+    img {
+      width: 128px;
+      height: 128px;
+      overflow: hidden;
+      border: 3px solid $red-color;
+      border-radius: 68px;
+      object-fit: cover;
+    }
+  }
+
+  &__info-wrapper {
+    .character-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: $dark-text-color;
+      margin-bottom: 15px;
+
+      @media (min-width: 768px) {
+        font-size: 18px;
+      }
+
+      @media (min-width: 1024px) {
+        font-size: 20px;
+      }
+    }
+
+    .character-detail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5px;
+
+      .icon-gryf {
+        width: 10px;
+        height: 10px;
+        background-color: $red-color;
+        margin-right: 5px;
+      }
+
+      .info {
+        font-size: 12px;
+        color: $base-text-color;
+        margin-bottom: 0;
+
+        @media (min-width: 768px) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
