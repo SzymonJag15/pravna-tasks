@@ -1,0 +1,17 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "description": "Zadanie pierwsze skupia się na przygotowaniu widoku w postaci pliku `.html` według przygotowanego prototypu.",
+  "main": "index.js",
+  "scripts": {
+    "css": "node-sass --include-path scss static/scss/main.scss static/css/main.css",
+    "watch": "nodemon -e scss -x npm run css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.15"
+  }
+}
