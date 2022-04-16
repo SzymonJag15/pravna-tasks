@@ -11,5 +11,116 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="main-wrapper">
+    <div class="main-wrapper__title-section">
+      <h1 class="title">HP Character Browser</h1>
+      <h3 class="subtitle">Meet the characters of the HP novel</h3>
+    </div>
+
+    <div class="main-wrapper__filtering-section">
+      <form action="/action_page.php">
+        <div class="form-field-wrapper input-wrapper">
+          <input type="text" id="name" name="name" placeholder="Wyszukaj po imieniu i nazwisku">
+        </div>
+
+        <div class="form-field-wrapper select-wrapper">
+          <select name="pets" id="pet-select">
+            <option value="">Wszystkie postaci</option>
+            <option value="dog">Hermiona Granger</option>
+            <option value="cat">Harry Potter</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrapper select-wrapper">
+          <select name="pets" id="pet-select">
+            <option value="">Wszystkie domy</option>
+            <option value="dog">Slitherin</option>
+            <option value="cat">Gryfindor</option>
+          </select>
+        </div>
+
+        <div class="buttons-wrapper">
+          <button class="form-button form-button--search" type="submit">
+            <img src="static\img\icon-search.svg" alt="">
+          </button>
+          <button class="form-button form-button--clear" type="submit">
+            <img src="static\img\icon-clear.svg" alt="">
+          </button>
+        </div>
+      </form> 
+    </div>
+
+    <div class="main-wrapper__characters-section">
+      <div class="search-label-wrapper">
+        <p>Wyniki wyszukiwania (32)</p>
+      </div>
+      <div class="characters-results">
+        <div class="single-character">
+          <div class="single-character__img-wrapper">
+            <img src="static\img\hermiona.png" alt="hermiona" class="image">
+          </div>
+          <div class="single-character__info-wrapper">
+            <p class="character-name">Hermiona Granger</p>
+            <div class="character-detail">
+              <div class="icon-gryf"></div>
+              <p class="info">Gryfindor</p>
+            </div>
+            <div class="character-detail">
+              <img src="static\img\icon-birthday-cake.svg" alt="">
+              <p class="info">27.05.1992</p>
+            </div>
+          </div>
+        </div>
+        <div class="single-character">
+          <div class="single-character__img-wrapper">
+            <img src="static\img\hermiona.png" alt="hermiona" class="image">
+          </div>
+          <div class="single-character__info-wrapper">
+            <p class="character-name">Hermiona Granger</p>
+            <div class="character-detail">
+              <div class="icon-gryf"></div>
+              <p class="info">Gryfindor</p>
+            </div>
+            <div class="character-detail">
+              <img src="static\img\icon-birthday-cake.svg" alt="">
+              <p class="info">27.05.1992</p>
+            </div>
+          </div>
+        </div>
+        <div class="single-character">
+          <div class="single-character__img-wrapper">
+            <img src="static\img\hermiona.png" alt="hermiona" class="image">
+          </div>
+          <div class="single-character__info-wrapper">
+            <p class="character-name">Hermiona Granger</p>
+            <div class="character-detail">
+              <div class="icon-gryf"></div>
+              <p class="info">Gryfindor</p>
+            </div>
+            <div class="character-detail">
+              <img src="static\img\icon-birthday-cake.svg" alt="">
+              <p class="info">27.05.1992</p>
+            </div>
+          </div>
+        </div>
+        <div class="single-character">
+          <div class="single-character__img-wrapper">
+            <img src="static\img\hermiona.png" alt="hermiona" class="image">
+          </div>
+          <div class="single-character__info-wrapper">
+            <p class="character-name">Hermiona Granger</p>
+            <div class="character-detail">
+              <div class="icon-gryf"></div>
+              <p class="info">Gryfindor</p>
+            </div>
+            <div class="character-detail">
+              <img src="static\img\icon-birthday-cake.svg" alt="">
+              <p class="info">27.05.1992</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
