@@ -12,7 +12,20 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 25px 15px; }
+  padding: 25px 15px;
+  min-height: 100vh; }
+  @media (min-width: 768px) {
+    .main-wrapper {
+      padding: 60px 20px; } }
+  @media (min-width: 1024px) {
+    .main-wrapper {
+      padding: 60px 50px; } }
+  @media (min-width: 1366px) {
+    .main-wrapper {
+      padding: 60px 150px; } }
+  @media (min-width: 1600px) {
+    .main-wrapper {
+      padding: 60px 293px; } }
   .main-wrapper__title-section {
     margin-bottom: 20px; }
     .main-wrapper__title-section .title {
@@ -24,6 +37,10 @@ html {
       @media (min-width: 768px) {
         .main-wrapper__title-section .title {
           font-size: 40px; } }
+      @media (min-width: 1024px) {
+        .main-wrapper__title-section .title {
+          font-size: 64px;
+          margin-bottom: 24px; } }
     .main-wrapper__title-section .subtitle {
       font-size: 16px;
       color: #57606F;
@@ -33,9 +50,20 @@ html {
       @media (min-width: 768px) {
         .main-wrapper__title-section .subtitle {
           font-size: 20px; } }
+      @media (min-width: 1024px) {
+        .main-wrapper__title-section .subtitle {
+          font-size: 24px;
+          margin-bottom: 32px; } }
   .main-wrapper__filtering-section {
     width: 100%;
     margin-bottom: 20px; }
+    @media (min-width: 1024px) {
+      .main-wrapper__filtering-section {
+        margin-bottom: 48px; } }
+    @media (min-width: 1024px) {
+      .main-wrapper__filtering-section form {
+        display: grid;
+        grid-template-columns: 1fr 222px; } }
     .main-wrapper__filtering-section form .form-fields-wrapper {
       display: grid;
       grid-template-columns: 1fr;
@@ -45,6 +73,9 @@ html {
       @media (min-width: 768px) {
         .main-wrapper__filtering-section form .form-fields-wrapper {
           display: flex; } }
+      @media (min-width: 1024px) {
+        .main-wrapper__filtering-section form .form-fields-wrapper {
+          grid-gap: 16px; } }
       @media (min-width: 768px) {
         .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper {
           flex-basis: 100%; } }
@@ -57,7 +88,18 @@ html {
         padding: 0 10px;
         font-size: 12px;
         background-color: #fff;
-        color: #747D8C; }
+        color: #747D8C;
+        transition: .3s; }
+        .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper input:focus-visible,
+        .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper select:focus-visible {
+          outline: none;
+          border-color: #740001; }
+        @media (min-width: 1024px) {
+          .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper input,
+          .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper select {
+            height: 49px;
+            font-size: 15px;
+            padding: 0 24px; } }
       @media (min-width: 768px) {
         .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper input {
           max-width: 428px;
@@ -65,6 +107,11 @@ html {
         .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper select {
           max-width: 317px;
           padding: 0 15px; } }
+      @media (min-width: 1600px) {
+        .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper input {
+          width: 428px; }
+        .main-wrapper__filtering-section form .form-fields-wrapper .form-field-wrapper select {
+          width: 317px; } }
     .main-wrapper__filtering-section form .buttons-wrapper {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -72,7 +119,7 @@ html {
       @media (min-width: 768px) {
         .main-wrapper__filtering-section form .buttons-wrapper {
           display: flex;
-          grid-gap: 5px;
+          grid-gap: 4px;
           justify-content: flex-end; } }
       .main-wrapper__filtering-section form .buttons-wrapper .form-button {
         width: 100%;
@@ -91,6 +138,9 @@ html {
         @media (min-width: 768px) {
           .main-wrapper__filtering-section form .buttons-wrapper .form-button {
             max-width: 101px; } }
+        @media (min-width: 1024px) {
+          .main-wrapper__filtering-section form .buttons-wrapper .form-button {
+            height: 49px; } }
   .main-wrapper__characters-section {
     width: 100%; }
     .main-wrapper__characters-section .search-label-wrapper {
@@ -99,6 +149,12 @@ html {
       font-size: 12px;
       color: #A4B0BE;
       margin-bottom: 10px; }
+      @media (min-width: 768px) {
+        .main-wrapper__characters-section .search-label-wrapper {
+          font-size: 15px; } }
+      @media (min-width: 1024px) {
+        .main-wrapper__characters-section .search-label-wrapper {
+          margin-bottom: 16px; } }
     .main-wrapper__characters-section .characters-results {
       display: grid;
       grid-template-columns: 1fr;
@@ -107,6 +163,12 @@ html {
       @media (min-width: 768px) {
         .main-wrapper__characters-section .characters-results {
           grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 1024px) {
+        .main-wrapper__characters-section .characters-results {
+          grid-template-columns: repeat(3, 1fr); } }
+      @media (min-width: 1600px) {
+        .main-wrapper__characters-section .characters-results {
+          grid-template-columns: repeat(4, 1fr); } }
       .main-wrapper__characters-section .characters-results .single-character {
         width: 100%;
         max-width: 317px;
@@ -134,6 +196,9 @@ html {
           @media (min-width: 768px) {
             .main-wrapper__characters-section .characters-results .single-character__info-wrapper .character-name {
               font-size: 18px; } }
+          @media (min-width: 1024px) {
+            .main-wrapper__characters-section .characters-results .single-character__info-wrapper .character-name {
+              font-size: 20px; } }
         .main-wrapper__characters-section .characters-results .single-character__info-wrapper .character-detail {
           display: flex;
           align-items: center;

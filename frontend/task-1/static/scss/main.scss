@@ -23,6 +23,23 @@ html {
   align-items: center;
   flex-direction: column;
   padding: 25px 15px;
+  min-height: 100vh;
+
+  @media (min-width: 768px) {
+    padding: 60px 20px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 60px 50px;
+  }
+
+  @media (min-width: 1366px) {
+    padding: 60px 150px;
+  }
+
+  @media (min-width: 1600px) {
+    padding: 60px 293px;
+  }
 
   &__title-section {
     margin-bottom: 20px;
@@ -37,6 +54,11 @@ html {
       @media (min-width: 768px) {
         font-size: 40px;
       }
+
+      @media (min-width: 1024px) {
+        font-size: 64px;
+        margin-bottom: 24px;
+      }
     }
 
     .subtitle {
@@ -49,6 +71,11 @@ html {
       @media (min-width: 768px) {
         font-size: 20px;
       }
+
+      @media (min-width: 1024px) {
+        font-size: 24px;
+        margin-bottom: 32px;
+      }
     }
   }
 
@@ -56,7 +83,16 @@ html {
     width: 100%;
     margin-bottom: 20px;
 
+    @media (min-width: 1024px) {
+      margin-bottom: 48px;
+    }
+
     form {
+      @media (min-width: 1024px) {
+        display: grid;
+        grid-template-columns: 1fr 222px;
+      }
+
       .form-fields-wrapper {
         display: grid;
         grid-template-columns: 1fr;
@@ -66,6 +102,10 @@ html {
 
         @media (min-width: 768px) {
           display: flex;
+        }
+
+        @media (min-width: 1024px) {
+          grid-gap: 16px;
         }
 
         .form-field-wrapper {
@@ -83,6 +123,18 @@ html {
             font-size: 12px;
             background-color: #fff;
             color: $placeholder-text-color;
+            transition: .3s;
+
+            &:focus-visible {
+              outline: none;
+              border-color: $red-color;
+            }
+
+            @media (min-width: 1024px) {
+              height: 49px;
+              font-size: 15px;
+              padding: 0 24px;
+            }
           }
   
           @media (min-width: 768px) {
@@ -95,6 +147,15 @@ html {
               padding: 0 15px;
             }
           }
+
+          @media (min-width: 1600px) {
+            input {
+              width: 428px;
+            }
+            select {
+              width: 317px;
+            }
+          }
         }
       }
 
@@ -105,7 +166,7 @@ html {
 
         @media (min-width: 768px) {
           display: flex;
-          grid-gap: 5px;
+          grid-gap: 4px;
           justify-content: flex-end;
         }
 
@@ -131,6 +192,10 @@ html {
           @media (min-width: 768px) {
             max-width: 101px;
           }
+
+          @media (min-width: 1024px) {
+            height: 49px;
+          }
         }
       }
     }
@@ -145,6 +210,14 @@ html {
       font-size: 12px;
       color: #A4B0BE;
       margin-bottom: 10px;
+
+      @media (min-width: 768px) {
+        font-size: 15px;
+      }
+
+      @media (min-width: 1024px) {
+        margin-bottom: 16px;
+      }
     }
 
     .characters-results {
@@ -155,6 +228,14 @@ html {
 
       @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (min-width: 1600px) {
+        grid-template-columns: repeat(4, 1fr);
       }
 
       .single-character {
@@ -191,6 +272,10 @@ html {
 
             @media (min-width: 768px) {
               font-size: 18px;
+            }
+
+            @media (min-width: 1024px) {
+              font-size: 20px;
             }
           }
 
