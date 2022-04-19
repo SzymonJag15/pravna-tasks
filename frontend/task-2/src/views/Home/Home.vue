@@ -23,8 +23,8 @@
         />
       </div>
       <div class="buttons-wrapper">
-        <app-icon-button isSearch type="submit" :icon="SearchIcon" />
-        <app-icon-button isClear :icon="ClearIcon" />
+        <app-icon-button isSearch :icon="SearchIcon" type="submit" />
+        <app-icon-button isClear :icon="ClearIcon" @click="onClearForm" />
       </div>
     </form>
     <div class="search-label-wrapper">
@@ -87,6 +87,12 @@ export default {
       console.log(name.value, selectedName.value, selectedHouse.value);
     };
 
+    const onClearForm = () => {
+      name.value = "";
+      selectedName.value = "";
+      selectedHouse.value = "";
+    };
+
     return {
       allCharacters,
       allCharactersNames,
@@ -98,6 +104,7 @@ export default {
       selectedHouse,
       searchResultsValue,
       filtering,
+      onClearForm,
     };
   },
 };

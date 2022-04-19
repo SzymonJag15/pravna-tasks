@@ -15,7 +15,6 @@ export default {
   props: {
     id: String,
     options: Array,
-    selected: String,
   },
 };
 </script>
