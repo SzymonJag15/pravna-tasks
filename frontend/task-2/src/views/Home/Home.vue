@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import AppTitle from "@/components/AppTitle/AppTitle.vue";
 import AppCharacterCard from "@/components/AppCharacterCard/AppCharacterCard.vue";
@@ -56,6 +56,8 @@ import AppIconButton from "@/components/AppIconButton/AppIconButton.vue";
 import SearchIcon from "@/assets/icon-search.svg";
 import ClearIcon from "@/assets/icon-clear.svg";
 
+import { getAllCharacters } from "@/utils/characters.js"
+
 export default {
   name: "Home",
   components: {
@@ -65,7 +67,7 @@ export default {
     AppUiWrapper,
     AppInput,
     AppSelect,
-    AppIconButton,
+    AppIconButton
   },
   setup() {
     const allCharacters = ref(mockData);
@@ -92,6 +94,12 @@ export default {
       selectedName.value = "";
       selectedHouse.value = "";
     };
+
+    onMounted(async () => {
+      const { data } = await getAllCharacters();
+
+      console.log(data)
+    })
 
     return {
       allCharacters,
