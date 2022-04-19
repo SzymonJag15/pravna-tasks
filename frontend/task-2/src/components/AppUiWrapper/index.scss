@@ -1,0 +1,24 @@
+.app-ui-wrapper {
+  background-color: $background;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px 15px;
+  min-height: 100vh;
+
+  @media (min-width: 768px) {
+    padding: 60px 20px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 60px 50px;
+  }
+
+  @media (min-width: 1366px) {
+    padding: 60px 150px;
+  }
+
+  @media (min-width: 1600px) {
+    padding: 60px 293px;
+  }
+}
