@@ -3,8 +3,8 @@
     class="app-select"
     @change="$emit('update:modelValue', $event.target.value)"
   >
-    <option v-for="option in options" :key="option" :value="option">
-      {{ option }}
+    <option v-for="option in options" :key="option" :value="option.value">
+      {{ option.name }}
     </option>
   </select>
 </template>

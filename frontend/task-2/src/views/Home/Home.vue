@@ -14,7 +14,7 @@
         <app-select
           :options="allCharactersNames"
           id="allCharacters"
-          v-model="selectedName"
+          v-model="selectedType"
         />
         <app-select
           :options="allCharactersHouses"
@@ -30,9 +30,18 @@
     <div class="search-label-wrapper">
       <p>Wyniki wyszukiwania ({{ searchResultsValue }})</p>
     </div>
-    <app-character-card-wrapper>
+    <app-character-card-wrapper
+      v-if="allCharacters && sortedCharacters.length <= 0"
+    >
       <app-character-card
         v-for="character in allCharacters"
+        :key="character.name"
+        :character="character"
+      />
+    </app-character-card-wrapper>
+    <app-character-card-wrapper v-else>
+      <app-character-card
+        v-for="character in sortedCharacters"
         :key="character.name"
         :character="character"
       />
@@ -41,14 +50,13 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import AppTitle from "@/components/AppTitle/AppTitle.vue";
 import AppCharacterCard from "@/components/AppCharacterCard/AppCharacterCard.vue";
 import AppCharacterCardWrapper from "@/components/AppCharacterCardWrapper/AppCharacterCardWrapper.vue";
 import AppUiWrapper from "@/components/AppUiWrapper/AppUiWrapper.vue";
 
-import mockData from "@/assets/mockData.json";
 import AppInput from "@/components/AppInput/AppInput.vue";
 import AppSelect from "@/components/AppSelect/AppSelect.vue";
 import AppIconButton from "@/components/AppIconButton/AppIconButton.vue";
@@ -56,7 +64,19 @@ import AppIconButton from "@/components/AppIconButton/AppIconButton.vue";
 import SearchIcon from "@/assets/icon-search.svg";
 import ClearIcon from "@/assets/icon-clear.svg";
 
-import { getAllCharacters } from "@/utils/characters.js"
+import {
+  allCharactersNames,
+  allCharactersHouses,
+} from "@/consts/characterFilters.js";
+
+import {
+  getAllCharacters,
+  sortList,
+  setDefaultImageCharacter,
+  getTotalResultsValue,
+  housesFilter,
+  typeFilter,
+} from "@/utils/characters.js";
 
 export default {
   name: "Home",
@@ -67,48 +87,85 @@ export default {
     AppUiWrapper,
     AppInput,
     AppSelect,
-    AppIconButton
+    AppIconButton,
   },
   setup() {
-    const allCharacters = ref(mockData);
-    const allCharactersNames = [
-      "Wszystkie postaci",
-      ...allCharacters.value.map((character) => character.name),
-    ];
-    const allCharactersHouses = [
-      "Wszystkie domy",
-      ...new Set(allCharacters.value.map((character) => character.house)),
-    ];
-
+    const allCharacters = ref([]);
+    const sortedCharacters = ref([]);
     const name = ref("");
-    const selectedName = ref("");
+    const selectedType = ref("");
     const selectedHouse = ref("");
-    const searchResultsValue = ref(allCharacters.value.length);
+    const searchResultsValue = ref(0);
 
     const filtering = () => {
-      console.log(name.value, selectedName.value, selectedHouse.value);
+      if (selectedHouse.value && !selectedType.value && !name.value) {
+        sortedCharacters.value = housesFilter(
+          allCharacters,
+          selectedHouse.value,
+          sortedCharacters
+        );
+      }
+
+      if (!selectedHouse.value && selectedType.value && !name.value) {
+        sortedCharacters.value = typeFilter(
+          allCharacters,
+          selectedType.value,
+          sortedCharacters
+        );
+      }
+
+      if (selectedHouse.value && selectedType.value && !name.value) {
+        const sortedByHouse = ref(
+          housesFilter(allCharacters, selectedHouse.value, sortedCharacters)
+        );
+
+        const sortedByType = typeFilter(
+          sortedByHouse,
+          selectedType.value,
+          sortedCharacters
+        );
+
+        sortedCharacters.value = [...sortedByHouse, ...sortedByType];
+      }
     };
 
     const onClearForm = () => {
       name.value = "";
-      selectedName.value = "";
+      selectedType.value = "";
       selectedHouse.value = "";
     };
+
+    watch([allCharacters, sortedCharacters], () => {
+      if (sortedCharacters.value.length > 0) {
+        const resultOfCharacters = getTotalResultsValue(sortedCharacters.value);
+        searchResultsValue.value = resultOfCharacters;
+        return;
+      }
+
+      const resultOfCharacters = getTotalResultsValue(allCharacters.value);
+      searchResultsValue.value = resultOfCharacters;
+    });
 
     onMounted(async () => {
       const { data } = await getAllCharacters();
 
-      console.log(data)
-    })
+      if (data) {
+        const setDefaultImages = setDefaultImageCharacter(data);
+        const sortedAlphabetCharacters = sortList(setDefaultImages);
+
+        return (allCharacters.value = sortedAlphabetCharacters);
+      }
+    });
 
     return {
       allCharacters,
+      sortedCharacters,
       allCharactersNames,
       allCharactersHouses,
       SearchIcon,
       ClearIcon,
       name,
-      selectedName,
+      selectedType,
       selectedHouse,
       searchResultsValue,
       filtering,
